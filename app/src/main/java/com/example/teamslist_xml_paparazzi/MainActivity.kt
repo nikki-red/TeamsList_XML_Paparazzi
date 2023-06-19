@@ -14,6 +14,7 @@ import com.example.mylibrary.SettingsFragment
 import com.example.mylibrary.databinding.ActivityMainBinding
 
 import androidx.appcompat.widget.Toolbar
+import com.example.mylibrary.databinding.RecyclerViewListBinding
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
+        //val mergeBinding =
         setContentView(binding.root)
         //loadFragment(HomeFragment())
 /*
@@ -50,10 +52,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
  */
-        binding.groupList.layoutManager = LinearLayoutManager(this)
+//        val binding1 = RecyclerViewListBinding.inflate(layoutInflater)
+//        val mergedBinding = MergeBinding(binding1, binding2)
+//        val recyclerView = binding.groupList
+        binding.recyclerViewListId.groupList.layoutManager = LinearLayoutManager(this)
+        //binding.groupList.layoutManager = LinearLayoutManager(this)
 
         rvAdapter = RvAdapter(groupList)
-        binding.groupList.adapter = rvAdapter
+        //binding.groupList.adapter = rvAdapter
+        binding.recyclerViewListId.groupList.adapter = rvAdapter
 
         val group1 = Group("Group 1", "Desc 1", false)
         val group2 = Group("Group 2", "Desc 2", false)

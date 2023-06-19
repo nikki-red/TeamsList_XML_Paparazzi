@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#F5F8FD"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
+
     <include layout="@layout/app_bar_main" />
     <!--    <androidx.appcompat.widget.Toolbar-->
 <!--    <com.google.android.material.appbar.MaterialToolbar-->
@@ -67,14 +67,17 @@
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintBottom_toBottomOf="parent">
 
+        <include layout="@layout/recycler_view_list"
+            android:id="@+id/recycler_view_list_id" />
+
         <!--Recycle view to show list of groups-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/groupList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/single_item" />
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/groupList"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scrollbars="vertical"-->
+<!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--            tools:listitem="@layout/single_item" />-->
 
     </LinearLayout>
     <!--</ScrollView>-->

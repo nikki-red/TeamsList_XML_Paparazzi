@@ -21,7 +21,13 @@ class RvAdapter(private var groupList: List<Group>) : RecyclerView.Adapter<RvAda
                 binding.expandedView.visibility = if (this.expand) View.VISIBLE else View.GONE
                 binding.cardLayout.setOnClickListener {
                     this.expand = !this.expand
-                    notifyDataSetChanged()
+                    //notifyDataSetChanged()
+                    notifyItemChanged(position)
+                    /*
+                    Instead of calling notifyDataSetChanged() to refresh the entire list,
+                    you can use the notifyItemChanged() method to update only the specific item that was clicked.
+                    This can help improve performance by avoiding unnecessary updates to all items in the list.
+                     */
                 }
             }
         }

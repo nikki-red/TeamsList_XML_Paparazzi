@@ -5,5 +5,5 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="TeamsList_XML_PaparazziTheme" parent="BaseTeamsList_XML_PaparazziTheme" />
+    <style name="TeamsList_XML_PaparazziTheme" parent="Theme.MaterialComponents.Light.NoActionBar" />
 </resources>
