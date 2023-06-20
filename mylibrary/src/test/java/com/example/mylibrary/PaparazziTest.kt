@@ -1,15 +1,12 @@
 package com.example.mylibrary
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.view.View
 import android.view.View.GONE
+import android.view.View.VISIBLE
 import app.cash.paparazzi.DeviceConfig.Companion.PIXEL_3_XL
 import app.cash.paparazzi.Paparazzi
 import com.example.mylibrary.databinding.ActivityMainBinding
 import org.junit.Rule
 import org.junit.Test
-import app.cash.paparazzi.DeviceConfig.Companion.PIXEL_XL
 import com.example.mylibrary.databinding.AppBarMainBinding
 import com.example.mylibrary.databinding.RecyclerViewListBinding
 import com.example.mylibrary.databinding.SingleItemBinding
@@ -30,13 +27,19 @@ class PaparazziTest {
     @Test
     fun testSingleItemClosed() {
         val binding = SingleItemBinding.inflate(paparazzi.layoutInflater)
+        val group = Group("test again" , "testDesc", false)
+        binding.setVariable(BR.group, group)
+        binding.executePendingBindings()
         paparazzi.snapshot(binding.root)
     }
 
     @Test
     fun testSingleItemExpanded() {
         val binding = SingleItemBinding.inflate(paparazzi.layoutInflater)
-        binding.expandedView.visibility = GONE
+        val group = Group("test again" , "testDesc", true)
+        binding.setVariable(BR.group, group)
+        binding.executePendingBindings()
+        binding.expandedView.visibility = VISIBLE
         paparazzi.snapshot(binding.root)
     }
 

@@ -2,64 +2,27 @@ package com.example.teamslist_xml_paparazzi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.fragment.app.Fragment
-import com.example.mylibrary.ChatFragment
 import com.example.mylibrary.Group
-import com.example.mylibrary.HomeFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.example.mylibrary.R
 import com.example.mylibrary.RvAdapter
-import com.example.mylibrary.SettingsFragment
 import com.example.mylibrary.databinding.ActivityMainBinding
 
-import androidx.appcompat.widget.Toolbar
-import com.example.mylibrary.databinding.RecyclerViewListBinding
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
     private var groupList = ArrayList<Group>()
     private lateinit var rvAdapter: RvAdapter
-
-    //lateinit var bottomNav : BottomNavigationView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
-        //val mergeBinding =
-        setContentView(binding.root)
-        //loadFragment(HomeFragment())
-/*
-        binding.bottomNav.setOnItemSelectedListener {
-            when(it.itemId) {
-                R.id.home -> {
-                    loadFragment(HomeFragment())
-                    true
-                }
-                R.id.message -> {
-                    loadFragment(ChatFragment())
-                    true
-                }
-                R.id.settings -> {
-                    loadFragment(SettingsFragment())
-                    true
-                }
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, com.example.mylibrary.R.layout.activity_main)
+        //setContentView(binding.root)
 
-                else -> {
-                    false
-                }
-            }
-        }
- */
-//        val binding1 = RecyclerViewListBinding.inflate(layoutInflater)
-//        val mergedBinding = MergeBinding(binding1, binding2)
-//        val recyclerView = binding.groupList
         binding.recyclerViewListId.groupList.layoutManager = LinearLayoutManager(this)
-        //binding.groupList.layoutManager = LinearLayoutManager(this)
 
         rvAdapter = RvAdapter(groupList)
-        //binding.groupList.adapter = rvAdapter
         binding.recyclerViewListId.groupList.adapter = rvAdapter
 
         val group1 = Group("Group 1", "Desc 1", false)
@@ -78,8 +41,7 @@ class MainActivity : AppCompatActivity() {
         groupList.add(group6)
         groupList.add(group7)
 
-        rvAdapter.notifyDataSetChanged()
-
+        rvAdapter?.notifyDataSetChanged()
     }
 
     override fun onDestroy() {
